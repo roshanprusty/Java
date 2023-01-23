@@ -1,26 +1,41 @@
-//package com;
-//public class Temp2 {
-//    public static void main(String[] args) {
-//        int[] arr={0,2,4,6,8,7,5,3,1};
-//        int target =4;
-//        findInMountainArray(arr,target);
-//
-//    }
-//    static int findInMountainArray(int[] arr, int target){
-//        int start=0;
-//        int end=arr.length;
-//        int mid = start+(end-start)/2;
-//
-//        while (start<end){
-//            //ascending order
-//            if(arr[mid]<arr[mid+1]){
-//                start=mid+1;
-//            }else {
-//                //descending order
-//                end=mid-1;
-//            }
-////            return end; //from here we can get pivot point
-//        }
-//
-//    }
-//}
+package com;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class Temp2 {
+    public static void main(String[] args) {
+        int[] arr = {-1,0,1,2,-1,-4};
+        System.out.println(threeSum(arr));
+
+    }
+    static List<List<Integer>> ans = new ArrayList<>();
+
+    public static List<List<Integer>> threeSum(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+//            ans.add(twoSum(nums[i],i+1,nums));
+            twoSum(nums[i],i+1,nums);
+        }
+        return ans;
+    }
+    public static  void twoSum (int val,int index, int[] arr){
+//        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> part = new ArrayList<>();
+        aa:
+        for (int i = index; i < arr.length; i++) {
+            if(val == arr[i]) continue aa;
+            bb:
+            for (int j = i+1; j < arr.length; j++) {
+               if((val == arr[j]) && (arr[i]==arr[j])) continue bb;
+               if((val+arr[i]+arr[j])==0){
+                    part.add(index);
+                   part.add(i);
+                   part.add(j);
+                   ans.add(part);
+                   part.removeAll(part);
+               }
+            }
+        }
+    }
+}

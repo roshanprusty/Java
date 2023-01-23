@@ -60,7 +60,6 @@ public class CycleLength {
                 }while (temp!=fast);
                 return length;
             }
-
         }
         return length;
     }
