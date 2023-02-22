@@ -2,13 +2,15 @@ package com.array2;
 
 public class FindInMountainArray {
     public static void main(String[] args) {
-       int[] array = {1,12,13,14,15,3,0};
+       int[] array = {4,1,2};
        int target = 3;
-        System.out.println(findInMountainArray(array,target));
+//        System.out.println(findInMountainArray(array,target));
+        findInMountainArray(array,target);
     }
     static int findInMountainArray(int[] arr, int target){
         //check if the targeted element is there or not before pivot num if not then it checks after the pivot num
         int i = index(arr);
+        System.out.println(i);
         if (binarySearchAes(arr,target,0,i) != -1){
             return binarySearchAes(arr,target,0,i);
         }else if(binarySearchDes(arr,target,i,arr.length-1) != -1){
@@ -22,13 +24,13 @@ public class FindInMountainArray {
         int end=arr.length-1;
         while(start<end){
             int mid = start + (end-start)/2;
-            if(arr[mid]>arr[mid+1]){
-                end = mid;
+            if(arr[mid]<arr[mid+1]){
+                start = mid+1;
             }else {
-                start = mid + 1;
+                end = mid;
             }
         }
-        return end;
+        return start;
     }
     static int binarySearchAes(int[] arr, int target,int start, int end){
         while (start<=end){

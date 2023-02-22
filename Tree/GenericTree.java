@@ -3,8 +3,7 @@ package com.Tree;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class GenericTree {
-    private class Node{
+public class GenericTree {    private class Node{
         int data;
         ArrayList<Node> children = new ArrayList<>();
     }
