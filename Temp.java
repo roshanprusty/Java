@@ -1,22 +1,27 @@
 package com;
+
+import java.util.Arrays;
+
 public class Temp {
     public static void main(String[] args) {
-        String[] nums = {"777","7","77","77"};
-        String target = "7777";
-        System.out.println(numOfPairs(nums,target));
+        String s = "abbcccaa";
+        System.out.println(countHomogenous(s));
     }
-    static int numOfPairs(String[] nums, String target) {
-        int count=0;
-        int numLen =nums.length;
-        for(int i=0; i<numLen; i++){
-            for(int j=0;j<numLen;j++){
-                if(i==j) continue;
-                String check =nums[i]+nums[j];
-                if(target.equals(check)){
-                    count++;
-                }
+    static int countHomogenous(String s) {
+        char charArray[] = s.toCharArray();
+        Arrays.sort(charArray);
+        char check = charArray[0];
+        int count=1;
+        int ans=0;
+        for(int i=1; i<s.length(); i++){
+            if(check!=charArray[i]){
+                check=charArray[i];
+                count*=count+1;
+                ans=count/2;
+                count=1;
             }
+            count++;
         }
-        return count;
+        return ans;
     }
 }
