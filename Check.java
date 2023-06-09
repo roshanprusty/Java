@@ -1,30 +1,27 @@
 package com;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Stack;
-
 public class Check {
     public static void main(String[] args) {
-        int []nums = {3};
-        System.out.println(singleNonDuplicate(nums));
-
+        int[][] grid ={{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
+        System.out.println(countNegatives(grid));
 
     }
-    static int singleNonDuplicate(int[] nums) {
-        int low =0;
-        int high = nums.length-1;
-        if(high==0) return nums[high];
-        if(nums[low]!=nums[low+1]) return nums[low];
-        if(nums[high]!=nums[high-1]) return nums[high];
-        while(low<=high){
-            int mid = low + (high-low)/2;
-            if(nums[mid]!=nums[mid-1] && nums[mid]!=nums[mid+1]) return nums[mid];
-            //even
-            if(mid%2==0 && nums[mid]==nums[mid+1]) low=mid+1;
-            else if(mid%2!=0 && nums[mid]==nums[mid-1]) low=mid+1;
-            else high=mid-1;
+    public static int countNegatives(int[][] grid) {
+        int count=0;
+        // for (int i=0; i<grid.length; i++) {
+        //     for (int j=0; j<grid[0].length; j++) {
+        //         if(grid[i][j]<0) count++;
+        //     }
+        // }
+        int idx=0;
+        int gridLen = grid.length-1;
+        int i=0;
+        for(i=(i+1==gridLen)?0:i+1; idx!=gridLen ; i++){
+            if(grid[idx][i]<0) count++;
+            if(i==gridLen) idx++;
+
         }
-        return -1;
+        return count;
+
     }
 }
