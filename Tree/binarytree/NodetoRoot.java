@@ -1,10 +1,9 @@
 package com.Tree.binarytree;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
+import java.util.ArrayList;
 import java.util.Stack;
 
-public class Intro1 {
+public class NodetoRoot {
     public static class Node{
         int data;
         Node left;
@@ -25,49 +24,26 @@ public class Intro1 {
         }
     }
 
-    public static int size(Node node){
-        //base case
-        if(node == null) return 0;
-        int ls = size(node.left);
-        int rs = size(node.right);
-        int ts =  ls+rs+1;
-        return ts;
+    static ArrayList<Integer> path= new ArrayList<>();
+    public static boolean ntr(Node node, int data) {
+        if(node==null) return false;
+        if(node.data==data) {
+            path.add(node.data);
+            return true;
+        }
+        boolean filc = ntr(node.left, data);
+        if (filc) {
+            path.add(node.data);
+            return true;
+        }
+        boolean firc = ntr(node.right, data);
+        if(firc){
+            path.add(node.data);
+            return true;
+        }
+        return false;
     }
-    public static int sum(Node node){
-        //base case
-        if(node == null) return 0;
-        int lsm = sum(node.left);
-        int rsm = sum(node.right);
-        int tsm =  lsm+rsm+ node.data;
-        return tsm;
-    }
-    public static int max(Node node){
-        //base case
-        if(node == null) return Integer.MIN_VALUE;
-        if(node == null) return 0;
-        int lm = max(node.left);
-        int rm = max(node.right);
-        int tm =  Math.max(node.data, Math.max(lm, rm));
-        return tm;
-    }
-    public static int height(Node node){
-        if(node==null) return -1;
-        int lh = height(node.left);
-        int rh = height(node.right);
-        int th = Math.max(lh,rh)+1;
-        return th;
-    }
-    public static void display(Node node){
-        if(node == null) return;
-        String str= "";
-        str+= node.left == null ? "." : node.left.data+"";
-        str+="<-"+node.data+"->";
-        str+=node.right==null? "." : node.right.data +"";
-        System.out.println(str);
 
-        display(node.left);
-        display(node.right);
-    }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                 null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -107,10 +83,10 @@ public class Intro1 {
                 st.pop();
             }
         }
-        display(root);
-        System.out.println(size(root));
-        System.out.println(sum(root));
-        System.out.println(max(root));
-        System.out.println(height(root));
+//        display(root);
+        ntr(root, 87);
+        System.out.println(path);
+
     }
 }
+

@@ -1,27 +1,46 @@
-package com;
-
-public class Check {
-    public static void main(String[] args) {
-        int[][] grid ={{4,3,2,-1},{3,2,1,-1},{1,1,-1,-2},{-1,-1,-2,-3}};
-        System.out.println(countNegatives(grid));
-
-    }
-    public static int countNegatives(int[][] grid) {
-        int count=0;
-        // for (int i=0; i<grid.length; i++) {
-        //     for (int j=0; j<grid[0].length; j++) {
-        //         if(grid[i][j]<0) count++;
-        //     }
-        // }
-        int idx=0;
-        int gridLen = grid.length-1;
-        int i=0;
-        for(i=(i+1==gridLen)?0:i+1; idx!=gridLen ; i++){
-            if(grid[idx][i]<0) count++;
-            if(i==gridLen) idx++;
-
-        }
-        return count;
-
-    }
-}
+//package com;
+//
+//import java.util.ArrayList;
+//
+//public class Check {
+//    public static void main(String[] args) {
+//        int n;
+//        System.out.println(n);
+//
+//    }
+//    public static void merge(int[][] intervals) {
+//        int totalElements = 0;
+//        for (int[] array : intervals) {
+//            totalElements += array.length;
+//        }
+//        int[] mergedArray = new int[totalElements];
+//        int index = 0;
+//        for (int[] array : intervals) {
+//            for (int element : array) {
+//                mergedArray[index++] = element;
+//            }
+//        }
+//        ArrayList<Integer> al = new ArrayList<>();
+//        for(int i=0; i<totalElements-1; i++){
+//            if(mergedArray[i]<=mergedArray[i+1] && i%2!=0){
+//                continue;
+//            }
+//            al.add(mergedArray[i]);
+//        }
+//        int[][] twoDArray = new int[al.size()/2][];
+//        int idx = 0;
+//        for (int i = 0; i < al.size()/2; i++) {
+//            for (int j = 0; j < 2; j++) {
+//                if (idx < al.size()) {
+//                    twoDArray[i][j] = al.get(idx++);
+//                }
+//            }
+//        }
+//        for (int i = 0; i < al.size()/2; i++) {
+//            for (int j = 0; j < 2; j++) {
+//                System.out.print(twoDArray[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
+//}
