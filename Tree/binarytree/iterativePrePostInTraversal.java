@@ -1,7 +1,8 @@
 package com.Tree.binarytree;
 import java.util.Stack;
 
-public class iterativePrePostInTraversal {public static class Node{
+public class iterativePrePostInTraversal {
+    public static class Node{
     int data;
     Node left;
     Node right;

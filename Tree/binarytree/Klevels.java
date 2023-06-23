@@ -1,10 +1,13 @@
 package com.Tree.binarytree;
 
+import com.stack_queue.Q;
+
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Intro1 {
+public class Klevels {
     public static class Node{
         int data;
         Node left;
@@ -24,32 +27,6 @@ public class Intro1 {
             this.state=state;
         }
     }
-
-    public static int size(Node node){
-        //base case
-        if(node == null) return 0;
-        int ls = size(node.left);
-        int rs = size(node.right);
-        int ts =  ls+rs+1;
-        return ts;
-    }
-    public static int sum(Node node){
-        //base case
-        if(node == null) return 0;
-        int lsm = sum(node.left);
-        int rsm = sum(node.right);
-        int tsm =  lsm+rsm+ node.data;
-        return tsm;
-    }
-    public static int max(Node node){
-        //base case
-        if(node == null) return Integer.MIN_VALUE;
-        if(node == null) return 0;
-        int lm = max(node.left);
-        int rm = max(node.right);
-        int tm =  Math.max(node.data, Math.max(lm, rm));
-        return tm;
-    }
     public static int height(Node node){
         if(node==null) return -1;
         int lh = height(node.left);
@@ -57,8 +34,26 @@ public class Intro1 {
         int th = Math.max(lh,rh)+1;
         return th;
     }
+    public static void kLevel(Node node, int level){
+        //level should not be greater then height
+//        if(level > height(node)) System.out.println("Level can't be greater than height");
+        if(node==null || level<0) return;
+        if(level ==0 ) System.out.println(node.data);
+//        System.out.print(node.data+" ");
+        kLevel(node.left, level-1);
+        kLevel(node.right, level-1);
+    }
+    public static void display(Node node){
+        if(node == null) return;
+        String str= "";
+        str+= node.left == null ? "." : node.left.data+"";
+        str+="<-"+node.data+"->";
+        str+=node.right==null? "." : node.right.data +"";
+        System.out.println(str);
 
-    
+        display(node.left);
+        display(node.right);
+    }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                 null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -99,9 +94,7 @@ public class Intro1 {
             }
         }
 //        display(root);
-        System.out.println(size(root));
-        System.out.println(sum(root));
-        System.out.println(max(root));
-        System.out.println(height(root));
+        kLevel(root,2);
     }
 }
+
