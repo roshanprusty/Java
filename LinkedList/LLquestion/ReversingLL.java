@@ -58,6 +58,19 @@ public class ReversingLL {
         curr.next=prev;
         head=curr;
     }
+public void reversingRecursion(Node prev, Node curr, Node frwd){
+    if(curr.next==null){
+        curr.next=prev;
+        head=curr;
+        return;
+    }
+    curr.next=prev;
+    prev=curr;
+    curr=frwd;
+    if(frwd.next!=null) frwd=frwd.next;
+    reversingRecursion(prev,curr, frwd);
+}
+
 
     public static void main(String[] args) {
         ReversingLL rl = new ReversingLL();
@@ -68,7 +81,9 @@ public class ReversingLL {
         rl.insertLast(254);
         rl.insertLast(21);
         rl.display();
-        rl.reversing();
+//        rl.reversing();
+//        rl.head = rl.reversingRecursion(rl.head, null);
+        rl.reversingRecursion(null,rl.head, rl.head.next );
         rl.display();
     }
 }
