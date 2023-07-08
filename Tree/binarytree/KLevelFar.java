@@ -23,29 +23,37 @@ public class KLevelFar {
             this.state=state;
         }
     }
-    public static ArrayList<Integer> al = new ArrayList<>();
+    public static ArrayList<Node> al = new ArrayList<>();
     public static boolean nodeToRoot(Node node, int value){
         if(node==null) return false;
         if(node.data==value) return true;
         boolean fils = nodeToRoot(node.left, value);
         if(fils){
-            al.add(node.data);
+            al.add(node);
             return true;
         }
         boolean firs=nodeToRoot(node.right, value);
         if(firs){
-            al.add(node.data);
+            al.add(node);
             return true;
         }
         return false;
     }
-    public static void kLevelFar(Node node, int value){
-        //Node to root
-        nodeToRoot(node, value);
-        if(al.isEmpty()) System.out.println("Value not found");
-        ArrayList<Integer> ans = new ArrayList<>();
-        
+    public static void printKLevelsDown(Node node, int k, Node blocker) {
+        if (node == null || k < 0 || node == blocker)
+            return;
+        if (k == 0)
+            System.out.println(node.data);
+        printKLevelsDown(node.left, k - 1, blocker);
+        printKLevelsDown(node.right, k - 1, blocker);
 
+    }
+    public static void printKNodesFar(Node node, int data, int k) {
+        nodeToRoot(node, data);
+        ArrayList<Node> path=al;
+        for (int i = 0; i < path.size(); i++) {
+            printKLevelsDown(path.get(i), k - i, i == 0 ? null : path.get(i - 1)); 
+        }
 
     }
     public static void main(String[] args) {
@@ -87,6 +95,7 @@ public class KLevelFar {
                 st.pop();
             }
         }
+        printKNodesFar(root, 75,2);
     }
 }
 
