@@ -1,9 +1,9 @@
 package com.Tree.binarytree;
 
-import java.util.ArrayList;
 import java.util.Stack;
 
-public class KLevelFar {
+public class SingleChildNode {
+    //print that child whose parent have single child
     public static class Node{
         int data;
         Node left;
@@ -23,42 +23,28 @@ public class KLevelFar {
             this.state=state;
         }
     }
-    public static ArrayList<Node> al = new ArrayList<>();
-    public static boolean nodeToRoot(Node node, int value){
-        if(node==null) return false;
-        if(node.data==value) return true;
-        boolean fils = nodeToRoot(node.left, value);
-        if(fils){
-            al.add(node);
-            return true;
-        }
-        boolean firs=nodeToRoot(node.right, value);
-        if(firs){
-            al.add(node);
-            return true;
-        }
-        return false;
-    }
-    public static void printKLevelsDown(Node node, int k, Node blocker) {
-        if (node == null || k < 0 || node == blocker)
-            return;
-        if (k == 0)
-            System.out.println(node.data);
-        printKLevelsDown(node.left, k - 1, blocker);
-        printKLevelsDown(node.right, k - 1, blocker);
+    public static void display(Node node){
+        if(node == null) return;
+        String str= "";
+        str+= node.left == null ? "." : node.left.data+"";
+        str+="<-"+node.data+"->";
+        str+=node.right==null? "." : node.right.data +"";
+        System.out.println(str);
 
+        display(node.left);
+        display(node.right);
     }
-    public static void printKNodesFar(Node node, int data, int k) {
-        nodeToRoot(node, data);
-        ArrayList<Node> path=al;
-        for (int i = 0; i < path.size(); i++) {
-            printKLevelsDown(path.get(i), k - i, i == 0 ? null : path.get(i - 1));
-        }
+    public static void singleChildNode(Node node){
+        if(node==null) return;
 
+        if(node.left!=null && node.right==null) System.out.println(node.left.data);
+        if(node.left==null && node.right!=null) System.out.println(node.right.data);
+
+        singleChildNode(node.left);
+        singleChildNode(node.right);
     }
     public static void main(String[] args) {
-        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
-                null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr={50, 25, 12, null, null, 37, 30, null, null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -95,7 +81,10 @@ public class KLevelFar {
                 st.pop();
             }
         }
-        printKNodesFar(root, 75,2);
+        display(root);
+        System.out.println("-------------------------------------------------------------------------------------");
+        singleChildNode(root);
     }
 }
+
 
