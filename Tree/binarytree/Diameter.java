@@ -101,6 +101,9 @@ public class Diameter {
         }
         System.out.println(diameterOfBinaryTree(root));
 
+        int[] temp = new int[1];
+        System.out.println(temp[0]);
+
     }
 
 }
