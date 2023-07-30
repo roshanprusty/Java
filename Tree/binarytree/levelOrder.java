@@ -37,7 +37,7 @@ public class levelOrder {
 //        display(node.right);
 //    }
     public static void lO(Node node){
-        //R P A
+        //R P A (remove print add)
         Queue<Node> mq = new ArrayDeque<>();
         mq.add(node);
         while (mq.size()>0){
