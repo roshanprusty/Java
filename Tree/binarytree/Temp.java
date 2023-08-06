@@ -78,10 +78,36 @@ public class Temp {
         return node;
 
     }
+    public static void singleChildNode(Node node, ArrayList<Integer> al){
+        if(node==null) return;
+        if(node.left==null && node.right!=null) al.add(node.right.data);
+        if(node.right==null && node.left!=null) al.add(node.left.data);
+        singleChildNode(node.left,al);
+        singleChildNode(node.right,al);
+        return;
+    }
+    public static Node deleteNode(Node node){
+        if(node==null) return null;
+        if(node.left==null && node.right==null) return null;
+        node.left=deleteNode(node.left);
+        node.right=deleteNode(node.right);
+        return node;
 
+    }
+    public static int tilt(Node node){
+        if(node==null) return 0;
+        int finalA=Math.abs(sum(node.left)-sum(node.right));
+        return finalA;
+    }
+    public static int sum(Node node){
+        if(node == null) return 0;
+        int left=sum(node.left);
+        int right=sum(node.right);
+        int both=left+right+node.data;
+        return both;
+    }
     public static void main(String[] args) {
-        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
-                null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr={50,10,30,null,null,20,null,null,40,null,null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -118,8 +144,14 @@ public class Temp {
                 st.pop();
             }
         }
-        Node ans =leftCloneTree(root);
-        display(ans);
+//        Node ans =leftCloneTree(root);
+//        display(root);
+//        ArrayList<Integer> al = new ArrayList<>();
+//        singleChildNode(root,al);
+//        System.out.println(al);
+//        System.out.println(sum(root));
+        System.out.println(tilt(root));
     }
+
 }
 
