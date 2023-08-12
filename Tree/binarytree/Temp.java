@@ -106,8 +106,16 @@ public class Temp {
         int both=left+right+node.data;
         return both;
     }
+    public static ArrayList<Integer> check = new ArrayList<>();
+    public static void rightView(Node node, int level){
+        if(node==null) return;
+        if(level==check.size()) check.add(node.data);
+        rightView(node.right, level+1);
+        rightView(node.left, level+1);
+        return;
+    }
     public static void main(String[] args) {
-        Integer[] arr={50,10,30,null,null,20,null,null,40,null,null};
+        Integer[] arr={1,null, 3, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -150,7 +158,9 @@ public class Temp {
 //        singleChildNode(root,al);
 //        System.out.println(al);
 //        System.out.println(sum(root));
-        System.out.println(tilt(root));
+//        System.out.println(tilt(root));
+        rightView(root, 0);
+        System.out.println(check);
     }
 
 }
