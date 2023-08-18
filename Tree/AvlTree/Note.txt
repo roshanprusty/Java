@@ -1,0 +1,5 @@
+For every node in the tree, the difference in height of left and right subtree of that node <=1
+
+Self Balancing tree :When tree is unbalanced, There avl trees says don't worry you
+                     keep adding the values. I will restructure the code. E.g., Avl tree
+

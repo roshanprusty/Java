@@ -1,6 +1,6 @@
-package com.Tree.binarySearchTree;
+package com.Tree.AvlTree;
 
-public class PrintInRange {
+public class Template {
     public static class Node{
         int data;
         Node left;
@@ -36,23 +36,10 @@ public class PrintInRange {
         display(node.left);
         display(node.right);
     }
-    public static void range(Node node, int d1, int d2){
-        if(node==null) return;
-        if(d1< node.data && d2< node.data){
-            range(node.left, d1, d2);
-        } else if (d1> node.data && d2> node.data) {
-            range(node.right, d1, d2);
-        }else {
-            range(node.left, d1, d2);
-            System.out.println(node.data);
-            range(node.right,d1, d2);
-        }
-    }
-
     public static void main(String[] args) {
         int[] arr ={12, 25, 37, 50, 62, 75, 87};
         Node root = construct(arr, 0, arr.length-1);
-        range(root, 61,95);
+        display(root);
     }
 }
 

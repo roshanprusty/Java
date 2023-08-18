@@ -1,19 +1,14 @@
-//package com.OOP2;
-//
-//import java.util.ArrayList;
-//
-//public class Temp {
-//    public static void main(String[] args) {
-//
-//
-//    }
-//    static ArrayList<Integer> Qe(int a, int b, int c){
-//        ArrayList<Integer> ans = new ArrayList<>();
-//        double temp = ((b*b) - 4*a*c);
-//        temp = Math.sqrt(temp);
-//
-//    }
-//
-//
-//
-//}
+package com.OOP2;
+
+public class Temp {
+    public static void main(String[] args) {
+        Human roshan = new Human("roshan", 21);
+        Human rohit = new Human("rohit", 24);
+        System.out.println(roshan.name);//roshan
+        System.out.println(rohit.age); //24
+
+        System.out.println(rohit.population); //2
+        System.out.println(roshan.population);//2
+
+    }
+}
