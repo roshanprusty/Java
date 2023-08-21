@@ -1,28 +1,15 @@
 package com.OOP5;
-
-import com.sun.jdi.Value;
-
 public class Son extends Parent {
-    // The body of career() is provided here
     @Override
-    void career() {
-        System.out.println("i want to become coder");
+    void carrer(){
+        System.out.println("I want to become pilot");
     }
-
-    // The body of career() is provided here
     @Override
-    void partner() {
-        System.out.println("I love katrina");
-    }
-
-    @Override
-    void normal() {
-        super.normal();
+    void partner(){
+        System.out.println("I love Aayushi Verma");
     }
 
     public Son(int age) {
         super(age);
-        //super(VALUE);
-
     }
 }

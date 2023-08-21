@@ -1,15 +1,13 @@
 package com.OOP3.Polymopherism;
 
 public class Square extends Shape{
+    @Override
     void area(){
-        System.out.println("a*a");
+        System.out.println("I am from the square class");
     }
-/*
-    @Override --> Overriding depends upon object
-                  static does no0t depends upon object
-                  Hence static method can't be overridden.
-*/
-//    static void greetings(){
-//        System.out.println("Hello Buddy, I am from square class ");
-//    }
+
+    static void greetings(){
+        System.out.println("Hello Buddy, I am from Square class ");
+    }
+
 }

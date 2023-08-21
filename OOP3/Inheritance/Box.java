@@ -1,19 +1,20 @@
 package com.OOP3.Inheritance;
 
 public class Box {
-//    private double l; ---> other file cannot access those members of the superclass that have been declared as private.
-//                      ---> except this class no other class can access the private member
     double l;
     double w;
     double h;
-//    double weight;
-
-    ///constructor overloading --> according to given argument the constructor has been selected.
-
-    Box(double l, double w, double h) {
+    String color="white";
+//    Box(double l, double w, double h) {
+//        this.l = l;
+//        this.w = w;
+//        this.h = h;
+//    }
+    Box(double l, double w, double h, String color) {
         this.l = l;
         this.w = w;
         this.h = h;
+        this.color = color;
     }
     Box() {
         this.l = -1;

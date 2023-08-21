@@ -1,5 +1,7 @@
 package com.OOP2;
 
+import com.OOP2.Singleton.Singleton;
+
 public class Main {
     public static void main(String[] args) {
 

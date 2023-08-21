@@ -1,17 +1,12 @@
-package com.OOP2;
+package com.OOP2.Singleton;
 
 public class Singleton {
-
-    //private --> if there is private then it will only allow to run in that class.
-
     private Singleton() {
 
     }
-
-    //create an object of Singleton
     private static Singleton instance;
 
-    //as it is allowed to make object in this class.
+    //return type: Singleton
     public static Singleton getInstance() {
         if (instance == null) {
             instance = new Singleton();
