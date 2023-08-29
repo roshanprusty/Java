@@ -1,4 +1,4 @@
-package com.String2;
+package com.string.String2;
 
 public class SkipCharacter {
     public static void main(String[] args) {
