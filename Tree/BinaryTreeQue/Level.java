@@ -1,11 +1,9 @@
-package com.Tree.binarytree;
+package com.Tree.BinaryTreeQue;
 
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
-public class levelOrder {
+import java.util.*;
+
+public class Level {
     public static class Node{
         int data;
         Node left;
@@ -26,18 +24,18 @@ public class levelOrder {
         }
     }
 
-//    public static void display(Node node){
-//        if(node == null) return;
-//        String str= "";
-//        str+= node.left == null ? "." : node.left.data+"";
-//        str+="<-"+node.data+"->";
-//        str+=node.right==null? "." : node.right.data +"";
-//        System.out.println(str);
-//
-//        display(node.left);
-//        display(node.right);
-//    }
-    public static void lO(Node node){
+        public static void display(Node node){
+        if(node == null) return;
+        String str= "";
+        str+= node.left == null ? "." : node.left.data+"";
+        str+="<-"+node.data+"->";
+        str+=node.right==null? "." : node.right.data +"";
+        System.out.println(str);
+
+        display(node.left);
+        display(node.right);
+    }
+    public static void levelWise(Node node){
         //R P A (remove print add)
         Queue<Node> mq = new ArrayDeque<>();
         mq.add(node);
@@ -51,6 +49,27 @@ public class levelOrder {
             }
             System.out.println();
         }
+    }
+    public static List<Double> avgDouble(Node node){
+        List<Double> list = new ArrayList<>();
+        Queue<Node> mq = new ArrayDeque<>();
+        mq.add(node);
+        while (mq.size()>0){
+            int count = mq.size();
+            double sum=0;
+            for (int i = 0; i <count ; i++) {
+                node=mq.remove();
+                sum+=node.data;
+                if(node.left != null){
+                    mq.add(node.left);
+                }
+                if(node.right != null){
+                    mq.add(node.right);
+                }
+            }
+            list.add((double)sum/count);
+        }
+        return list;
     }
 
     public static void main(String[] args) {
@@ -92,8 +111,8 @@ public class levelOrder {
                 st.pop();
             }
         }
-//        display(root);
-        lO(root);
+        levelWise(root);
+        System.out.println(avgDouble(root));
 
     }
 }

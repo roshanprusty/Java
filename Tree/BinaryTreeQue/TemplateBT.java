@@ -1,11 +1,7 @@
-package com.Tree.binarytree;
-
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Queue;
+package com.Tree.BinaryTreeQue;
+import java.util.ArrayList;
 import java.util.Stack;
-
-public class levelOrder {
+public class TemplateBT {
     public static class Node{
         int data;
         Node left;
@@ -25,34 +21,17 @@ public class levelOrder {
             this.state=state;
         }
     }
+    public static void display(Node node){
+        if(node == null) return;
+        String str= "";
+        str+= node.left == null ? "." : node.left.data+"";
+        str+="<-"+node.data+"->";
+        str+=node.right==null? "." : node.right.data +"";
+        System.out.println(str);
 
-//    public static void display(Node node){
-//        if(node == null) return;
-//        String str= "";
-//        str+= node.left == null ? "." : node.left.data+"";
-//        str+="<-"+node.data+"->";
-//        str+=node.right==null? "." : node.right.data +"";
-//        System.out.println(str);
-//
-//        display(node.left);
-//        display(node.right);
-//    }
-    public static void lO(Node node){
-        //R P A (remove print add)
-        Queue<Node> mq = new ArrayDeque<>();
-        mq.add(node);
-        while (mq.size()>0){
-            int count = mq.size();
-            for (int i = 0; i <count ; i++) {
-                node=mq.remove(); //remove
-                System.out.print(node.data+" "); //print
-                if(node.left != null) mq.add(node.left); //left child added
-                if(node.right != null) mq.add(node.right); //right child added
-            }
-            System.out.println();
-        }
+        display(node.left);
+        display(node.right);
     }
-
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                 null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -92,8 +71,6 @@ public class levelOrder {
                 st.pop();
             }
         }
-//        display(root);
-        lO(root);
-
     }
 }
+
