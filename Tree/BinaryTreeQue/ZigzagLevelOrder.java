@@ -1,9 +1,7 @@
 package com.Tree.BinaryTreeQue;
-
-
 import java.util.*;
 
-public class Level {
+public class ZigzagLevelOrder {
     public static class Node{
         int data;
         Node left;
@@ -23,8 +21,7 @@ public class Level {
             this.state=state;
         }
     }
-
-        public static void display(Node node){
+    public static void display(Node node){
         if(node == null) return;
         String str= "";
         str+= node.left == null ? "." : node.left.data+"";
@@ -35,54 +32,47 @@ public class Level {
         display(node.left);
         display(node.right);
     }
-    public static void levelWise(Node node){
-        Queue<Node> mq = new ArrayDeque<>();
-        mq.add(node);
-        while (mq.size()>0){
-            int count = mq.size();
-            for (int i = 0; i <count ; i++) {
-                node=mq.remove();
-                System.out.print(node.data+" ");
-                if(node.left != null) mq.add(node.left);
-                if(node.right != null) mq.add(node.right);
-            }
-            System.out.println();
-        }
-    }
-    public static List<Double> avgDouble(Node node){
-        List<Double> list = new ArrayList<>();
-        Queue<Node> mq = new ArrayDeque<>();
-        mq.add(node);
-        while (mq.size()>0){
-            int count = mq.size();
-            double sum=0;
-            for (int i = 0; i <count ; i++) {
-                node=mq.remove();
-                sum+=node.data;
-                if(node.left != null){
-                    mq.add(node.left);
-                }
-                if(node.right != null){
-                    mq.add(node.right);
-                }
-            }
-            list.add((double)sum/count);
-        }
-        return list;
-    }
-    public static int levelOrderSuccessor(Node node, int value){
-        //next element of any value
-        Queue<Node> que = new ArrayDeque<>();
-        que.add(node);
-        while (!que.isEmpty()){
-            Node remove = que.remove();
-            if(remove.data==value) return que.peek().data;
-            if(remove.left!=null) que.add(remove.left);
-            if(remove.right!=null) que.add(remove.right);
-        }
-        return -1;
-    }
+    public static List<List<Integer>> zigzagLevelOrder(Node root) {
+        List<List<Integer>> result = new ArrayList<>();
 
+        if (root == null) {
+            return result;
+        }
+
+        Deque<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        boolean reverse = false;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>(levelSize);
+            for (int i=0; i < levelSize; i++) {
+                if (!reverse) {
+                    Node currentNode = queue.pollFirst();
+                    currentLevel.add(currentNode.data);
+                    if (currentNode.left != null) {
+                        queue.addLast(currentNode.left);
+                    }
+                    if (currentNode.right != null) {
+                        queue.addLast(currentNode.right);
+                    }
+                } else {
+                    Node currentNode = queue.pollLast();
+                    currentLevel.add(currentNode.data);
+                    if (currentNode.right != null) {
+                        queue.addFirst(currentNode.right);
+                    }
+                    if (currentNode.left != null) {
+                        queue.addFirst(currentNode.left);
+                    }
+                }
+            }
+            reverse = !reverse;
+            result.add(currentLevel);
+        }
+        return result;
+    }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                 null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -122,9 +112,10 @@ public class Level {
                 st.pop();
             }
         }
-        levelWise(root);
-        System.out.println(avgDouble(root));
-        System.out.println(levelOrderSuccessor(root, 87));
-
+        List<List<Integer>> ans = zigzagLevelOrder(root);
+        Collections.reverse(ans);
+        System.out.println(ans);
+        System.out.println(zigzagLevelOrder(root));
     }
 }
+
