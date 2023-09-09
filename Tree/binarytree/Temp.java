@@ -152,13 +152,7 @@ public class Temp {
                 st.pop();
             }
         }
-//        Node ans =leftCloneTree(root);
-//        display(root);
-//        ArrayList<Integer> al = new ArrayList<>();
-//        singleChildNode(root,al);
-//        System.out.println(al);
-//        System.out.println(sum(root));
-//        System.out.println(tilt(root));
+
         rightView(root, 0);
         System.out.println(check);
     }
