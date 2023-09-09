@@ -1,8 +1,8 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
 
 import java.util.ArrayList;
 import java.util.Stack;
-public class TemplateBT {
+public class SymmetricTree {
     public static class Node{
         int data;
         Node left;
@@ -33,9 +33,24 @@ public class TemplateBT {
         display(node.left);
         display(node.right);
     }
+    public static boolean isSymmetric(Node root) {
+        return root==null || isSymmetricHelp(root.left, root.right);
+    }
+    public static boolean isSymmetricHelp(Node left, Node right)
+    {
+        if(left==null || right==null)
+        {
+            return left==right;
+        }
+        if(left.data!=right.data)
+        {
+            return false;
+        }
+        return isSymmetricHelp(left.left,right.right) && isSymmetricHelp(left.right,right.left);
+    }
+
     public static void main(String[] args) {
-        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
-                null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr={1, 2, 3, null, null, 4, null, null, 2, 4, null, null, 3, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -72,6 +87,7 @@ public class TemplateBT {
                 st.pop();
             }
         }
+        System.out.println(isSymmetric(root));
     }
 }
 

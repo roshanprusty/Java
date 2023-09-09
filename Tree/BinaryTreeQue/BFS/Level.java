@@ -1,4 +1,5 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
+
 
 
 import java.util.*;
@@ -46,7 +47,6 @@ public class Level {
                 if(node.left != null) mq.add(node.left);
                 if(node.right != null) mq.add(node.right);
             }
-            System.out.println();
         }
     }
     public static List<Double> avgDouble(Node node){

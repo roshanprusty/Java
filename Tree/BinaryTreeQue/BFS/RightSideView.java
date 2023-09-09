@@ -1,14 +1,10 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Queue;
 import java.util.Stack;
-
-/*
-when to use  : when answer lie in root node that time use Breadth first search
-               when you are asked to search level by level
-*/
-public class BFS {
+public class RightSideView {
     public static class Node{
         int data;
         Node left;
@@ -39,14 +35,22 @@ public class BFS {
         display(node.left);
         display(node.right);
     }
-    public static void levelWise(Node node){
+    public static void rightView(Node node){
+        //here I have used type of approach : I have iterated level wise and there printed last value
         Queue<Node> que = new ArrayDeque<>();
-        que.add(node);
-        while (!que.isEmpty()){
-            Node remove = que.remove();
-            if(remove.left!=null) que.add(remove.left);
-            if(remove.right!=null) que.add(remove.right);
-            System.out.print(remove.data+ " ");
+        que.offer(node);
+        while(!que.isEmpty()){
+            int count= que.size();
+            for (int i = 0; i < count; i++) {
+                Node remove = que.poll();
+                if(i== count-1) System.out.print(remove.data+" ");
+                if(remove.left!=null){
+                    que.add(remove.left);
+                }
+                if(remove.right!=null){
+                    que.add(remove.right);
+                }
+            }
         }
     }
     public static void main(String[] args) {
@@ -88,8 +92,8 @@ public class BFS {
                 st.pop();
             }
         }
-        levelWise(root);
+        display(root);
+        rightView(root);
     }
 }
-
 

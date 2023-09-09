@@ -1,8 +1,13 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
 
-import java.util.ArrayList;
+
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
-public class TemplateBT {
+
+public class Cousins {
+    //IMPORTANT
     public static class Node{
         int data;
         Node left;
@@ -33,9 +38,49 @@ public class TemplateBT {
         display(node.left);
         display(node.right);
     }
+    public static boolean cousin(Node root, int x, int y){
+        if (root == null) {
+            return false;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            boolean foundX = false, foundY = false;
+            for (int i = 0; i < size; i++) {
+                Node current = queue.poll();
+                if (current.data == x) {
+                    foundX = true;
+                }
+                if (current.data == y) {
+                    foundY = true;
+                }
+                if (current.left != null && current.right != null) {
+                    if ((current.left.data == x && current.right.data == y) || (current.left.data == y && current.right.data == x)) {
+                        return false;
+                    }
+                }
+                if (current.left != null) {
+                    queue.add(current.left);
+                }
+                if (current.right != null) {
+                    queue.add(current.right);
+                }
+            }
+
+            if (foundX && foundY) {
+                return true;
+            }
+
+            if (foundX || foundY) {
+                return false;
+            }
+        }
+
+        return false;
+    }
     public static void main(String[] args) {
-        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
-                null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr={1, 2, 4, null, null, null, 3, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -72,6 +117,9 @@ public class TemplateBT {
                 st.pop();
             }
         }
+        display(root);
+        System.out.println(cousin(root,2,3));
     }
 }
+
 

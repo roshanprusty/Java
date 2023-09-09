@@ -1,8 +1,8 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
 
-import java.util.ArrayList;
-import java.util.Stack;
-public class TemplateBT {
+import java.util.*;
+
+public class ZigzagLevelOrder {
     public static class Node{
         int data;
         Node left;
@@ -32,6 +32,47 @@ public class TemplateBT {
 
         display(node.left);
         display(node.right);
+    }
+    public static List<List<Integer>> zigzagLevelOrder(Node root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Deque<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        boolean reverse = false;
+
+        while (!queue.isEmpty()) {
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>(levelSize);
+            for (int i=0; i < levelSize; i++) {
+                if (!reverse) {
+                    Node currentNode = queue.pollFirst();
+                    currentLevel.add(currentNode.data);
+                    if (currentNode.left != null) {
+                        queue.addLast(currentNode.left);
+                    }
+                    if (currentNode.right != null) {
+                        queue.addLast(currentNode.right);
+                    }
+                } else {
+                    Node currentNode = queue.pollLast();
+                    currentLevel.add(currentNode.data);
+                    if (currentNode.right != null) {
+                        queue.addFirst(currentNode.right);
+                    }
+                    if (currentNode.left != null) {
+                        queue.addFirst(currentNode.left);
+                    }
+                }
+            }
+            reverse = !reverse;
+            result.add(currentLevel);
+        }
+        return result;
     }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
@@ -72,6 +113,10 @@ public class TemplateBT {
                 st.pop();
             }
         }
+        List<List<Integer>> ans = zigzagLevelOrder(root);
+        Collections.reverse(ans);
+        System.out.println(ans);
+        System.out.println(zigzagLevelOrder(root));
     }
 }
 

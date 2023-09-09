@@ -1,8 +1,14 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
 
-import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.Stack;
-public class TemplateBT {
+
+/*
+when to use  : when answer lie in root node that time use Breadth first search
+               when you are asked to search level by level
+*/
+public class BFS {
     public static class Node{
         int data;
         Node left;
@@ -32,6 +38,16 @@ public class TemplateBT {
 
         display(node.left);
         display(node.right);
+    }
+    public static void levelWise(Node node){
+        Queue<Node> que = new ArrayDeque<>();
+        que.add(node);
+        while (!que.isEmpty()){
+            Node remove = que.remove();
+            if(remove.left!=null) que.add(remove.left);
+            if(remove.right!=null) que.add(remove.right);
+            System.out.print(remove.data+ " ");
+        }
     }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
@@ -72,6 +88,8 @@ public class TemplateBT {
                 st.pop();
             }
         }
+        levelWise(root);
     }
 }
+
 

@@ -1,4 +1,5 @@
-package com.Tree.BinaryTreeQue;
+package com.Tree.BinaryTreeQue.BFS;
+
 
 import java.util.Stack;
 
