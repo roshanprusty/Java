@@ -1,18 +1,19 @@
-package com.Tree.BinaryTreeQue.DFS;
+package com.Tree.BinaryTreeQue;
+
+import java.util.ArrayList;
 import java.util.Stack;
-
-public class iterativePrePostInTraversal {
+public class FlattenBinaryTree {
     public static class Node{
-    int data;
-    Node left;
-    Node right;
+        int data;
+        Node left;
+        Node right;
 
-    Node(int data, Node left, Node right){
-        this.data=data;
-        this.left=left;
-        this.right=right;
+        Node(int data, Node left, Node right){
+            this.data=data;
+            this.left=left;
+            this.right=right;
+        }
     }
-}
     public static class Pair{
         Node node;
         int state;
@@ -21,37 +22,30 @@ public class iterativePrePostInTraversal {
             this.state=state;
         }
     }
+    public static void display(Node node){
+        if(node == null) return;
+        String str= "";
+        str+= node.left == null ? "." : node.left.data+"";
+        str+="<-"+node.data+"->";
+        str+=node.right==null? "." : node.right.data +"";
+        System.out.println(str);
 
-    public static void prePostIn(Node node){
-        Stack<Pair> stack = new Stack<>();
-        Pair rtp= new Pair(node, 1);
-        stack.push(rtp);
-        String pre ="";
-        String in="";
-        String post="";
-        while (stack.size()>0){
-            if(stack.peek().state==1){//pre
-                pre+=stack.peek().node.data+" ";
-                stack.peek().state++;
-                if(stack.peek().node.left!=null) {
-                    Pair lp = new Pair(stack.peek().node.left,1);
-                    stack.push(lp);
-                }
-            } else if (stack.peek().state==2) {
-                in+=stack.peek().node.data+" ";
-                stack.peek().state++;
-                if(stack.peek().node.right!=null) {
-                    Pair lp = new Pair(stack.peek().node.right,1);
-                    stack.push(lp);
-                }
-            }else {
-                post+= stack.peek().node.data+" ";
-                stack.pop();
+        display(node.left);
+        display(node.right);
+    }
+    public static void flatten(Node root){
+        if(root==null) return;
+        while (root!=null){
+            if(root.left!=null){
+                Node left = root.left;
+                Node current = left;
+                while (current.right!=null) current=current.right;
+                current.right=root.right;
+                root.left=null;
+                root.right=left;
             }
+            root=root.right;
         }
-        System.out.println(pre);
-        System.out.println(in);
-        System.out.println(post);
     }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
@@ -92,8 +86,6 @@ public class iterativePrePostInTraversal {
                 st.pop();
             }
         }
-        prePostIn(root);
-
     }
-
 }
+
