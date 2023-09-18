@@ -1,7 +1,8 @@
 package com.Tree.BinaryTreeQue.DFS;
+
 import java.util.ArrayList;
 import java.util.Stack;
-public class SumRootToLeaf {
+public class PathExist {
     public static class Node{
         int data;
         Node left;
@@ -32,17 +33,38 @@ public class SumRootToLeaf {
         display(node.left);
         display(node.right);
     }
-    public static int ans=0;
-    public static int sumRootToLeaf(Node root, int sum) {
-        if(root==null) return 0;
-        sum=10*sum+root.data;
-        sumRootToLeaf(root.left,sum);
-        if(root.left==null && root.right==null) ans+=sum;
-        sumRootToLeaf(root.right, sum);
-        return ans;
+    public static boolean findPath(Node node, int[] arr){
+        if (node == null) {
+            return false;
+        }
+        if (node.data == arr[0]) {
+            return helper(node, arr, 1);
+        }
+        // Recursively search in both left and right subtrees
+        return findPath(node.left, arr) || findPath(node.right, arr);
     }
+
+    public static boolean helper(Node node, int[] arr, int idx){
+        if (idx == arr.length) {
+            return true; // All elements in the array have been matched
+        }
+
+        boolean found = false;
+
+        if (node.left != null && node.left.data == arr[idx]) {
+            found = helper(node.left, arr, idx + 1);
+        }
+
+        if (!found && node.right != null && node.right.data == arr[idx]) {
+            found = helper(node.right, arr, idx + 1);
+        }
+
+        return found;
+    }
+
     public static void main(String[] args) {
-        Integer[] arr={1, 2, null, null, 3, null, null};
+        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
+                null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -79,7 +101,8 @@ public class SumRootToLeaf {
                 st.pop();
             }
         }
-        System.out.println(sumRootToLeaf(root, ans));
+        int[] path = {50, 25, 12};
+        System.out.println(findPath(root, path));
     }
 }
 
