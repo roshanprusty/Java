@@ -101,7 +101,7 @@ public class PathExist {
                 st.pop();
             }
         }
-        int[] path = {50, 25, 12};
+        int[] path = { 25, 17};
         System.out.println(findPath(root, path));
     }
 }

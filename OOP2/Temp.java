@@ -10,5 +10,6 @@ public class Temp {
         System.out.println(rohit.population); //2
         System.out.println(roshan.population);//2
 
+        roshan.greetings();
     }
 }

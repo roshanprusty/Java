@@ -33,9 +33,23 @@ public class TemplateBT {
         display(node.left);
         display(node.right);
     }
+    public static Node binaryTreePruning(Node node){
+        if (node == null) return null;
+
+        // Recursively prune left and right subtrees
+        node.left = binaryTreePruning(node.left);
+        node.right = binaryTreePruning(node.right);
+
+        // Check and prune the current node
+        if (node.data != 1 && node.left == null && node.right == null) {
+            return null; // If node has no children and data is not 1, remove it
+        }
+
+        return node;
+    }
+
     public static void main(String[] args) {
-        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
-                null, null, 75, 62, null, 70, null, null, 87, null, null};
+        Integer[] arr={1, 0, 0, null, null, 0, null, null, 1, 0, null, null, 1, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -72,6 +86,8 @@ public class TemplateBT {
                 st.pop();
             }
         }
+        display(root);
+        display(binaryTreePruning(root));
     }
 }
 
