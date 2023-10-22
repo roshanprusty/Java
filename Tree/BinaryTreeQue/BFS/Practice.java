@@ -1,14 +1,10 @@
 package com.Tree.BinaryTreeQue.BFS;
 
 import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
-
-/*
-when to use  : when answer lie in root node that time use Breadth first search
-               when you are asked to search level by level
-*/
-public class BFS {
+public class Practice {
     public static class Node{
         int data;
         Node left;
@@ -41,8 +37,6 @@ public class BFS {
     }
     public static void levelWise(Node node){
         Queue<Node> que = new ArrayDeque<>();
-//        Use ArrayDeque if you need a queue with good performance for adding and removing elements from both ends of the queue (front and back) and don't require additional list operations.
-//        Use LinkedList if you need a queue with similar performance characteristics but also require additional list-related operations (e.g., inserting elements at specific positions) or if you need to iterate through the queue frequently.
         que.add(node);
         while (!que.isEmpty()){
             int size = que.size();

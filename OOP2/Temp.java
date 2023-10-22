@@ -1,15 +1,10 @@
 package com.OOP2;
 
 public class Temp {
-    public static void main(String[] args) {
-        Human roshan = new Human("roshan", 21);
-        Human rohit = new Human("rohit", 24);
-        System.out.println(roshan.name);//roshan
-        System.out.println(rohit.age); //24
+    public static class Tokyo{
+        void greetings() {
+            System.out.println("Simple si baat hai mera outer class hai Temp and inner class Tokyo, ab tu dekh le ");
+        }
 
-        System.out.println(rohit.population); //2
-        System.out.println(roshan.population);//2
-
-        roshan.greetings();
     }
 }
