@@ -2,19 +2,11 @@ package com.OOP5;
 
 public class Main {
     public static void main(String[] args) {
-       Son son = new Son(23);
-       son.carrer();
-       son.partner();
-        System.out.println(son.age);
+        Parent kishor = new StepDaughter(2, 22);
+        kishor.partner();
+        kishor.greetings();
 
-       Parent daughter = new Daughter(33);
-       daughter.carrer();
-       daughter.partner();
-        System.out.println(daughter.age);
-
-//        Parent mom = new Parent(); //error: for abstract classes you cannot object
-
-        Parent.greetings();
-
+        Temp t = new Temp2("Roshan", 22);
+        t.hello();
     }
 }

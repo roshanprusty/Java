@@ -1,9 +1,7 @@
 package com.Tree.BinaryTreeQue.BFS;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
+
 public class Practice {
     public static class Node{
         int data;
@@ -49,6 +47,86 @@ public class Practice {
             System.out.println();
         }
     }
+    public static void average(Node node){
+        Queue<Node> que = new ArrayDeque<>();
+        que.add(node);
+        while (!que.isEmpty()){
+            int size = que.size();
+            int sum=0;
+            for (int i = 0; i < size; i++) {
+                Node temp = que.remove();
+                if(temp.left!=null) que.add(temp.left);
+                if(temp.right!=null) que.add(temp.right);
+                sum+=temp.data;
+            }
+            System.out.println(sum/size);
+        }
+    }
+    public static int levelOrderSuccessor(Node node, int value){
+        Queue<Node> que = new ArrayDeque<>();
+        que.add(node);
+        while (!que.isEmpty()){
+            Node temp = que.remove();
+            if(temp.left!=null){
+                que.add(temp.left);
+                if(temp.data==value){
+                    return que.peek().data;
+                }
+            }
+            if(temp.right!=null){
+                que.add(temp.right);
+                if(temp.data==value){
+                    return que.peek().data;
+                }
+            }
+
+        }
+        return -1;
+    }
+    public static List<List<Integer>> zigzagLevelOrder(Node node){
+//        https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+        Queue<Node> que = new ArrayDeque<>();
+        que.add(node);
+        List<List<Integer>> ans = new ArrayList<>();
+        int count=0;
+        while (!que.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            int size= que.size();
+            for (int i = 0; i < size; i++) {
+                Node remove = que.remove();
+                if(remove.left!=null) que.add(remove.left);
+                if(remove.right!=null) que.add(remove.right);
+                temp.add(remove.data);
+            }
+            if(count%2!=0){
+                Collections.reverse(temp);
+            }
+            ans.add(temp);
+            count++;
+        }
+        return ans;
+    }
+    public static List<List<Integer>> zigzagLevelOrderII(Node node){
+//        https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+        Queue<Node> que = new ArrayDeque<>();
+        que.add(node);
+        List<List<Integer>> ans = new ArrayList<>();
+        int count=0;
+        while (!que.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            int size= que.size();
+            for (int i = 0; i < size; i++) {
+                Node remove = que.remove();
+                if(remove.left!=null) que.add(remove.left);
+                if(remove.right!=null) que.add(remove.right);
+                temp.add(remove.data);
+            }
+            ans.add(temp);
+            count++;
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
     public static void main(String[] args) {
         Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                 null, null, 75, 62, null, 70, null, null, 87, null, null};
@@ -88,7 +166,11 @@ public class Practice {
                 st.pop();
             }
         }
-        levelWise(root);
+//        levelWise(root);
+//        average(root);
+//        System.out.println(levelOrderSuccessor(root, 70));
+//        System.out.println(zigzagLevelOrder(root));
+//        System.out.println(zigzagLevelOrderII(root));
     }
 }
 

@@ -1,7 +1,13 @@
 package com.OOP5;
 
-public final class Temp {
+public class Temp {
+    String name="Temp";
+
+    public Temp(String name) {
+        this.name = name;
+    }
+
     void hello (){
-        System.out.println("hello guys");
+        System.out.println("hello guys from temp");
     }
 }

@@ -1,15 +1,15 @@
 package com.OOP5;
 
 public abstract class Parent {
-    int age;
+    int member;
 
-    public Parent(int age) {
-        this.age = age;
+    public Parent(int member) {
+        this.member = member;
     }
 
     //you cannot create abstract constructor
 
-    static void greetings(){
+    void greetings(){
         System.out.println("Am alright!!");
     }
 
@@ -17,6 +17,6 @@ public abstract class Parent {
     abstract void partner();
 
     void house(){
-        System.out.println("Checking purpose");
+        System.out.println("Property worth 12Cr");
     }
 }

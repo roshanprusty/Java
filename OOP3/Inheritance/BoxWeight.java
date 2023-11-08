@@ -9,10 +9,13 @@ public class BoxWeight extends Box{
         super();
         this.weight=weight;
     }
-    BoxWeight(double l, double w, double h, double weight, String color, String color2){
-        super(5,4,7, "white");
+    BoxWeight(double l, double w, double h, double weight, String color){
+        super(l,w,h);
+        this.color=color;
         this.weight=weight;
-        this.color=super.color;
+    }
+    @Override
+    public void calling(){
 
     }
 }

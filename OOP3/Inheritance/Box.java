@@ -10,11 +10,10 @@ public class Box {
 //        this.w = w;
 //        this.h = h;
 //    }
-    Box(double l, double w, double h, String color) {
+    Box(double l, double w, double h) {
         this.l = l;
         this.w = w;
         this.h = h;
-        this.color = color;
     }
     Box() {
         this.l = -1;

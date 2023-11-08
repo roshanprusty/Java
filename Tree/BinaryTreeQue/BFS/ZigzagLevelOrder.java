@@ -113,6 +113,7 @@ public class ZigzagLevelOrder {
                 st.pop();
             }
         }
+//        display(root);
         List<List<Integer>> ans = zigzagLevelOrder(root);
         Collections.reverse(ans);
         System.out.println(ans);

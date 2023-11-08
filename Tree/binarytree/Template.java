@@ -32,6 +32,7 @@ public class Template {
             display(node.left);
             display(node.right);
         }
+
         public static void main(String[] args) {
             Integer[] arr={50, 25, 12, null, null, 37, 30, null,
                     null, null, 75, 62, null, 70, null, null, 87, null, null};
