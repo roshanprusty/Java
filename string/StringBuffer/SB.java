@@ -39,6 +39,6 @@ public class SB {
         System.out.println(sb3.capacity());
 
         StringBuilder sbd = new StringBuilder();
-        
+
     }
 }

@@ -2,6 +2,11 @@ package com.Tree;
 import java.util.*;
 
 public class Practice {
+//    https://www.geeksforgeeks.org/top-50-tree-coding-problems-for-interviews/
+
+    public Practice() {
+    }
+
     public static class Node{
         int data;
         Node left;
@@ -40,6 +45,7 @@ public class Practice {
         return height;
     }
     public static boolean identical(Node node, Node node2) {
+//        https://www.geeksforgeeks.org/write-c-code-to-determine-if-two-trees-are-identical/
         if (node == null && node2 == null) return true;
         if (node == null || node2 == null) return false;
 
@@ -103,6 +109,14 @@ public class Practice {
         }
         return (root.data == subRoot.data) && helper(root.left, subRoot.left) && helper(root.right, subRoot.right);
     }
+    public static int val=0;
+    public static int helper(Node node){
+        if(node==null) return 0;
+        int lefty=helper(node.left);
+        int righty=helper(node.right);
+        val=Math.max(lefty,righty)+1;
+        return val;
+    }
 
 
     public static void main(String[] args) {
@@ -152,7 +166,8 @@ public class Practice {
 
 //        System.out.println(isSumProperty(root));
 
-        display(root); largestValue(root);
+//        display(root); largestValue(root);
+        System.out.println(height(root));
     }
 }
 
