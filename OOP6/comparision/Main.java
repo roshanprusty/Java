@@ -20,6 +20,8 @@ public class Main{
 //            System.out.println("raj has more marks");
 //        }
 
+        System.out.println(rahul.compareTo(raj));
+
         Student[] list ={rahul, raj, piyush, karan, sanjay};
         System.out.println(Arrays.toString(list));
         Arrays.sort(list);

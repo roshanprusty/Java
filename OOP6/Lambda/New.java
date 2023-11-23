@@ -1,7 +1,5 @@
 package com.OOP6.Lambda;
 
-import com.OOP6.comparision.LambdaFun;
-
 public class New {
     public static void main(String[] args) {
         Operation sum = new Operation() {

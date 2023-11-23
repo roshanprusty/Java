@@ -1,4 +1,4 @@
-package com.OOP6;
+package com.OOP6.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,24 +1,18 @@
-package com.OOP6;
+package com.OOP6.generics;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 // https://docs.oracle.com/javase/tutorial/java/generics/restrictions.html#createObjects
 
-// here T should either be Number or its subclasses
-public class WildcardExample<T extends Number> {
+public class CustomGenArrayList<T> {
 
     private Object[] data;
     private static int DEFAULT_SIZE = 10;
-    private int size = 0; // also working as inde value
+    private int size = 0; // also working as index value
 
-    public WildcardExample() {
+    public CustomGenArrayList() {
         data = new Object[DEFAULT_SIZE];
-    }
-
-    public void getList(List<? extends Number> list) {
-        // do something
     }
 
     public void add(T num) {
@@ -69,7 +63,7 @@ public class WildcardExample<T extends Number> {
 
     public static void main(String[] args) {
 //        ArrayList list = new ArrayList();
-        WildcardExample list = new WildcardExample();
+        CustomGenArrayList list = new CustomGenArrayList();
 //        list.add(3);
 //        list.add(5);
 //        list.add(9);
@@ -84,7 +78,7 @@ public class WildcardExample<T extends Number> {
 //        list2.add("dfghj");
 
 
-        WildcardExample<Integer> list3 = new WildcardExample<>();
+        CustomGenArrayList<Integer> list3 = new CustomGenArrayList<>();
         for (int i = 0; i < 14; i++) {
             list3.add(2 * i);
         }
