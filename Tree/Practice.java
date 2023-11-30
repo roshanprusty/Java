@@ -117,6 +117,9 @@ public class Practice {
         val=Math.max(lefty,righty)+1;
         return val;
     }
+    public static void greetings(){
+        System.out.println("hi");
+    }
 
 
     public static void main(String[] args) {

@@ -1,5 +1,7 @@
 package com.Tree;
 
+import com.OOPsPratice.Main;
+
 import java.util.ArrayList;
 import java.util.Stack;
 public class Demo {
@@ -33,14 +35,11 @@ public class Demo {
         display(node.left);
         display(node.right);
     }
-    public static boolean helper(Node node, Node node2){
-       if(node==null && node2==null) return true;
-       if (node==null || node2==null) return false;
-       if(node.data == node2.data) return true;
-       if(node.data!=node2.data) return false;
-       Boolean left = helper(node.left, node2.left);
-       Boolean right = helper(node.right, node2.right);
-       return left&&right;
+    public static int helper(Node node){
+        if(node==null) return 0;
+        int left = helper(node.left);
+        int right = helper(node.right);
+        return Math.max(left,right)+1;
     }
 
 
@@ -84,7 +83,8 @@ public class Demo {
         }
         Practice check = new Practice();
 //        display(root);
-        System.out.println(helper(root,root));
+        System.out.println(helper(root));
+
     }
 }
 
