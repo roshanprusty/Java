@@ -1,4 +1,6 @@
 package com.Tree;
+import com.string.Substring;
+
 import java.util.*;
 
 public class Practice {
@@ -63,6 +65,18 @@ public class Practice {
         mirror(node.right);
         return;
     }
+    public static int diameter(Node node){
+        int left= diameterHelper(node.left);
+        int right=diameterHelper(node.right);
+        return left+right+1;
+    }
+    public static int diameterHelper(Node node){
+//        https://www.geeksforgeeks.org/diameter-of-a-binary-tree-in-on-a-new-method/
+        if(node == null) return 0;
+        int left = diameterHelper(node.left);
+        int right = diameterHelper(node.right);
+        return Math.max(left,right)+1;
+    }
     public static int isSumProperty(Node node){
         if(node==null) return 0;
         int left = (node.left!=null) ? node.left.data : 0;
@@ -91,6 +105,7 @@ public class Practice {
         System.out.println(al);
     }
     public static boolean isSubtree(Node root, Node subRoot) {
+//        https://www.geeksforgeeks.org/check-if-a-binary-tree-is-subtree-of-another-binary-tree/
         if (root == null) {
             return false;
         }
@@ -99,7 +114,6 @@ public class Practice {
         }
         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
     }
-
     public static boolean helper(Node root, Node subRoot) {
         if (root == null && subRoot == null) {
             return true;
@@ -109,16 +123,32 @@ public class Practice {
         }
         return (root.data == subRoot.data) && helper(root.left, subRoot.left) && helper(root.right, subRoot.right);
     }
-    public static int val=0;
-    public static int helper(Node node){
-        if(node==null) return 0;
-        int lefty=helper(node.left);
-        int righty=helper(node.right);
-        val=Math.max(lefty,righty)+1;
-        return val;
+    public static boolean isSubTree2(Node root, Node subRoot){
+//        https://www.youtube.com/watch?v=GZ8g8KdavUo&t=143s
+//        https://www.geeksforgeeks.org/check-if-a-binary-tree-is-subtree-of-another-binary-tree/
+        return subTreeHelper2(root).equals(subTreeHelper2(subRoot));
     }
-    public static void greetings(){
-        System.out.println("hi");
+    public static String subTreeHelper2(Node root) {
+        if (root == null) return "null";
+        StringBuilder sbLeft = new StringBuilder("");
+        StringBuilder sbRight = new StringBuilder("");
+        sbLeft.append(subTreeHelper2(root.left));
+        sbRight.append(subTreeHelper2(root.right));
+        return root.data + sbLeft.toString() + sbRight.toString();
+    }
+    public static boolean balancedTree(Node node){
+//        https://www.youtube.com/watch?v=Yt50Jfbd8Po
+
+        return balancedTreeHelper(node)!=-1;
+    }
+    public static int balancedTreeHelper(Node node){
+        if(node==null) return 0;
+        int left = balancedTreeHelper(node.left);
+        if(left==-1) return -1;
+        int right = balancedTreeHelper(node.right);
+        if(left==-1) return -1;
+        if(Math.abs(left-right)>1) return -1;
+        return Math.max(left,right)+1;
     }
 
 
@@ -161,16 +191,8 @@ public class Practice {
                 st.pop();
             }
         }
-//        System.out.println(height(root));
-
-//        System.out.println(identical(root,root));
-
-//        display(root); mirror(root); display(root);
-
-//        System.out.println(isSumProperty(root));
-
-//        display(root); largestValue(root);
-        System.out.println(height(root));
+        display(root);
+        System.out.println(balancedTree(root));
     }
 }
 

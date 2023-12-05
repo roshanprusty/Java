@@ -35,16 +35,26 @@ public class Demo {
         display(node.left);
         display(node.right);
     }
-    public static int helper(Node node){
-        if(node==null) return 0;
-        int left = helper(node.left);
-        int right = helper(node.right);
-        return Math.max(left,right)+1;
+    public static void helper(Node node){
+       if(node == null) return;
+       if(node.left!= null && node.right!=null){
+           Node temp =node.left;
+           node.left=node.right;
+           node.right=temp;
+       }
+       if(node.left==null || node.right==null){
+           Node temp =node.left;
+           node.left=node.right;
+           node.right=temp;
+       }
+       helper(node.left);
+       helper(node.right);
     }
 
 
     public static void main(String[] args) {
-        Integer[] arr={1, 0, 0, null, null, 0, null, null, 1, 0, null, null, 1, null, null};
+        Integer[] arr={50, 25, 12, null, null, 37, 30, null,
+                null, null, 75, 62, null, 70, null, null, 87, null, null};
 
         Node root = new Node(arr[0], null, null);
         Pair rtp = new Pair(root, 1);
@@ -81,10 +91,10 @@ public class Demo {
                 st.pop();
             }
         }
-        Practice check = new Practice();
-//        display(root);
-        System.out.println(helper(root));
-
+        display(root);
+        helper(root);
+        System.out.println("---------------------------------------------------------");
+        display(root);
     }
 }
 
