@@ -29,7 +29,7 @@ public class SqrtDecomposition {
             l++;
         }
 
-        //right part
+        //middle part
         while (l+sqrt<=r){
             ans=blocks[l/sqrt]; //*
             l+=sqrt;
