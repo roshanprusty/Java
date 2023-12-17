@@ -1,9 +1,5 @@
 package com.OOP5.Interface.DealingMultipleInterface;
 
-import com.OOP5.Interface.Brake;
-import com.OOP5.Interface.Engine;
-import com.OOP5.Interface.Media;
-
 public class Car implements Brake, Engine, Media {
     Brake brake = new Brake() {
         @Override
