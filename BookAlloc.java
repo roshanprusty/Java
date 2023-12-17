@@ -1,6 +1,6 @@
 //package com;
 //
-//import com.array2.BinarySearch;
+//import com.array2.searching.BinarySearch;
 //
 //public class BookAlloc {
 //    public static void main(String[] args) {

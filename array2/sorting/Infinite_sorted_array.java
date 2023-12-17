@@ -1,4 +1,4 @@
-package com.array2;
+package com.array2.sorting;
 //Find position of an element in a sorted array of infinite numbers
 public class Infinite_sorted_array {
     public static void main(String[] args) {

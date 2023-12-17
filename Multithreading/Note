@@ -1,0 +1,81 @@
+    Multitasking allows several activities to occur concurrently on the computer
+    * For example, a computer can run a web browser, play music, and download files all at the same time,
+      thanks to its multitasking capabilities.
+
+    * Multitasking is basically two types:
+        * Process-based multitasking
+        * Thread-based multitasking
+
+    * Process Based Multitasking: Allows process to run concurrently on the computer E.g., Running the
+                                  Ms Paint while also working with the word processor.
+
+    * Thread Based Multitasking: Thread Based Multitasking in which multiple threads within a single process
+                                  execute independently and concurrently.
+
+    * Thread Vs Process:
+        * Two threads share the same address space
+        * Context switching threads is usually less expensive than between process.
+        * The cost of communication between thread is relatively low.
+
+    Why Multithreading?
+        * In a single-threaded environment, only one task at a time can be performed.
+        * CPU cycles are wasted, for example, when waiting for user input.
+        * Multitasking allow idle CPU time to be put to good use.
+
+    Thread Creation:
+        * A thread in java is represented by an object of the Thread class.
+        * Creating threads is achieved in one of two ways:
+            1. Implementing the java.lang.Runnable interface
+            2. Extending the java.lang.Thread class.
+        * Tell which way you will prefer to create the thread?
+           ANS:- It depend upon the situation, which way to create In first way we generally extend the thread class but think if class
+                 want to extend other class at the same time. Then there this way will not suit in this situation bcz we cannot extend more
+                 than one class. where as with using interface we can implement more than one.
+
+                 So, my personal favorite is 2nd way (using interface).
+
+    Synchronized Method:
+        * While a thread is inside a synchronized method of an object, all other threads that wish to execute this synchronized method or any
+          other synchronized method of the object will have to wait.
+        * This restriction does not apply to the thread that already has the lock and is executing a synchronized method of the object.
+        * Such a method can invoke other synchronized method of the object without being blocked.
+        * The non-synchronized methods of the object can always be called at any time by any thread.
+
+    Rules of Synchronization:
+        * A thread acquire the object lock associated with a shared resource before it can enter the shared resource.
+        * The runtime system ensure that no other thread can enter a shared resource if another thread already holds the object lock, it is blocked, i.e.,
+          it must wait for the lock to become available.
+        * When a thread exist a shared resource, the runtime system ensures that the object lock is also relinquished. If another thread is waiting for this
+          object lock, it can try to acquire the lock in order to gain access to the shared resource.
+
+    Static Synchronized Methods: A thread acquiring the lock of a class to execute a static synchronized method has no effect on any thread acquiring the
+                                 lock on any on any object of the class to execute a synchronized instance method.
+
+                                 * In other words, synchronization of static methods in a class is independent from the synchronization of instance methods
+                                   on object of the class.
+
+    Race Condition: It occurs when two or more threads simultaneously update the same value and, as a consequence, leave in an undefined or inconsistent state
+
+    Synchronized block
+
+    Thread safety: It's the term to describe the design of classes that ensures that the state of their object is always consistent,
+                   even when the objects are used concurrently  by multiple threads. Eg StringBuffer where as StringBuilder is not.
+
+    Volatile Keyword: https://youtu.be/WldMTtUWqTg?t=4042
+
+    Producer Consumer Pattern: BlockingQueue.java file
+
+    Thread States:
+
+    Thread joining:
+
+    Thread priority:
+
+    Thread Scheduler:
+
+    Deadlock: A deadlock is a situation where a thread is waiting for an object lock that another thread holds, and this second thread is waiting for an object lock that
+              the first thread hold.
+
+              Since each thread is waiting for the other thread to relinquish a lock, they both remain waiting forever in Blocked-for-lock-acquisition state.
+
+              The thread are said to be deadlocked.

@@ -1,3 +1,4 @@
+Breadth First Search (BFS)
 Q1 : Binary Tree Level Order Traversal
 Q2 : Average of Levels in Binary Tree
 Q3 : Level Order Successor of a node
@@ -24,3 +25,9 @@ Q21 : Sum Root to Leaf Numbers
 Q22 : Binary Tree Maximum Path Sum
 Q23 : Path Exists in Binary Tree from Root to Leaf
 Q24 : Path Exists in Binary Tree at Any Nodes
+
+View Concept
+1. Left view
+2. Right view
+3. Top View
+4. button view

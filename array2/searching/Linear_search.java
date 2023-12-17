@@ -1,4 +1,4 @@
-package com.array2;
+package com.array2.searching;
 
 import java.util.Scanner;
 
