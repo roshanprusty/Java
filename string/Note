@@ -1,0 +1,42 @@
+String Memory Allocation: https://www.youtube.com/watch?v=gp6NY01XFoE
+comparison: https://www.youtube.com/watch?v=_m04SPTU4N0&t=120s
+-----------------------------------------------------------------------------------------------------------------
+speed: StringBuffer > StringBuilder > String
+use: String (when data is not changing)
+     StringBuilder (when context switching is not in picture)
+     StringBuffer (when context switching is there as well as value is getting updated)
+-----------------------------------------------------------------------------------------------------------------
+Immutable --> when values get updated, rather than updating it will create new value in memory and if old is not referenced
+            by any of variable. It will remove by garbage collector.
+
+Mutable --> when values get updated, it will update that value in that given place.
+
+Thread safe --> Thread safety refers to the property of a program or a piece of code that allows it to be executed by
+                multiple threads concurrently without causing unexpected or erroneous behavior. In a multithreaded environment,
+                where multiple threads are accessing and possibly modifying shared data, ensuring thread safety is crucial to
+                prevent data corruption, race conditions, and other synchronization issues.
+-----------------------------------------------------------------------------------------------------------------
+String --> Immutable & not thread safe
+* String literals
+  String name="roshan"; //Memory address: Ox29
+  String name2="roshan"; //Memory address: Ox29
+
+  Key points:
+  --> If values are created using String literals, then value are created in String Pool. Suppose if value is already present
+      than it will point only rather than creating.
+  --> If multiple variable pointing to same value present in String Pool. Suppose one of the variable's value got changed then there
+      it will create new value in String Pool.
+
+* By using New Keyword
+  String name = new String("Roshan"); //Memory address: Ox32
+  String name2 = new String("Roshan"); //Memory address: Ox652
+
+  Key Points:
+  --> If values are created using new Keyword, then there value are created in String Pool and in heap as well.
+  --> Memory address of the both the value will be different.
+  --> If any variable creates the same value which is already present in memory than there also one more value will be created in heap
+      But Where as in String Pools it will point only.
+
+StringBuilder --> mutable,  Heap & all methods are not synchronized and not thread safe.
+
+StringBuffer --> mutable, Heap & all methods are synchronized and are thread safe.
