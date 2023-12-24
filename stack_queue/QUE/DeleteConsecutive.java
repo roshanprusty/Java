@@ -17,6 +17,7 @@ public class DeleteConsecutive {
                 }
             }
             stack.push(i);
+
         }
         return stack.size();
     }
